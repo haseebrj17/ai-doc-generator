@@ -6,10 +6,11 @@ import json
 import tempfile
 from pathlib import Path
 from datetime import datetime
-from scripts.documentation import conftest
 
-from scripts.documentation.config import Config
-from scripts.documentation.doc_builder import DocumentationBuilder
+import pytest
+
+from src.ai_doc_generator.config import Config
+from src.ai_doc_generator.doc_builder import DocumentationBuilder
 
 
 class TestDocumentationBuilder:

@@ -5,10 +5,11 @@ Tests for the main documentation generator module.
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
-from scripts.documentation import conftest
 
-from scripts.documentation.config import Config
-from scripts.documentation.doc_generator import DocumentationGenerator
+import pytest
+
+from src.ai_doc_generator.config import Config
+from src.ai_doc_generator.doc_generator import DocumentationGenerator
 
 
 class TestDocumentationGenerator:

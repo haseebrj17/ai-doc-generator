@@ -5,10 +5,11 @@ Tests for the change tracker module.
 import time
 import tempfile
 from pathlib import Path
-from scripts.documentation import conftest
 
-from scripts.documentation.config import Config
-from scripts.documentation.change_tracker import ChangeTracker
+import pytest
+
+from src.ai_doc_generator.config import Config
+from src.ai_doc_generator.change_tracker import ChangeTracker
 
 
 class TestChangeTracker:

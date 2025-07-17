@@ -356,7 +356,8 @@ class DocumentationBuilder:
                 method_sig += ")`"
 
                 if method.get("docstring"):
-                    method_sig += f" - {method['docstring'].split('\\n')[0]}"
+                    first_line = method['docstring'].split('\n')[0]
+                    method_sig += f" - {first_line}"
 
                 lines.append(method_sig)
 

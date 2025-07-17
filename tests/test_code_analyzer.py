@@ -3,9 +3,10 @@ Tests for the code analyzer module.
 """
 
 from pathlib import Path
-from scripts.documentation import conftest
 
-from scripts.documentation.code_analyzer import CodeAnalyzer
+import pytest
+
+from src.ai_doc_generator.code_analyzer import CodeAnalyzer
 
 
 class TestCodeAnalyzer:

@@ -4,10 +4,11 @@ Tests for the file scanner module.
 
 import tempfile
 from pathlib import Path
-from scripts.documentation import conftest
 
-from scripts.documentation.config import Config
-from scripts.documentation.file_scanner import FileScanner
+import pytest
+
+from src.ai_doc_generator.config import Config
+from src.ai_doc_generator.file_scanner import FileScanner
 
 
 class TestFileScanner:
