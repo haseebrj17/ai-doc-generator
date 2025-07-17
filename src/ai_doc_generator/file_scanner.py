@@ -46,7 +46,9 @@ class FileScanner:
             root_path = Path(root)
 
             # Skip excluded directories
-            dirs[:] = [d for d in dirs if not self._should_exclude_dir(root_path / d)]
+            dirs_filtered = [d for d in dirs if not self._should_exclude_dir(root_path / d)]
+            dirs.clear()
+            dirs.extend(dirs_filtered) [d for d in dirs if not self._should_exclude_dir(root_path / d)]
 
             # Skip if we're in a test directory and not including tests
             if not self.config.include_tests and self._is_test_directory(root_path):

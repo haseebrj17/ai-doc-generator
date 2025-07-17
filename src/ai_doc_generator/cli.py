@@ -13,7 +13,7 @@ from .config import Config
 from .doc_generator import DocumentationGenerator
 
 
-def setup_logging(verbose: bool = False):
+def setup_logging(verbose: bool = False) -> None:
     """Configure logging based on verbosity."""
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(
@@ -23,7 +23,7 @@ def setup_logging(verbose: bool = False):
     )
 
 
-def main():
+def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Generate documentation for Python projects using AI",

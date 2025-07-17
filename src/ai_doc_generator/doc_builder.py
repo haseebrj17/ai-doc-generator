@@ -3,6 +3,8 @@ Documentation builder for organizing and formatting the final documentation.
 """
 
 import json
+from typing import Dict, List, Any
+
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List
@@ -18,8 +20,8 @@ class DocumentationBuilder:
 
     def __init__(self, config: Config):
         self.config = config
-        self.documentation = {}
-        self.project_structure = {}
+        self.documentation: Dict[str, Any] = {}
+        self.project_structure: Dict[str, Any] = {}
 
     def load_existing_documentation(self) -> None:
         """Load existing documentation for incremental updates."""
@@ -31,7 +33,7 @@ class DocumentationBuilder:
                 logger.info(f"Loaded existing documentation with {len(self.documentation)} files")
             except Exception as e:
                 logger.error(f"Error loading existing documentation: {e}")
-                self.documentation = {}
+                self.documentation: Dict[str, Any] = {}
 
     def add_file_documentation(self, file_path: Path, doc_content: Dict) -> None:
         """Add documentation for a single file."""
@@ -275,7 +277,7 @@ class DocumentationBuilder:
 
     def _group_files_by_module(self) -> Dict[str, List[str]]:
         """Group files by their module (directory)."""
-        modules = {}
+        modules: Dict[str, List[str]] = {}
 
         for file_path in self.documentation.keys():
             module = str(Path(file_path).parent)
@@ -436,7 +438,7 @@ class DocumentationBuilder:
     def _analyze_architecture(self) -> str:
         """Analyze and describe the project architecture."""
         # This is a simplified analysis - could be enhanced
-        layers = {
+        layers: Dict[str, List[str]] = {
             "api": [],
             "application": [],
             "domain": [],

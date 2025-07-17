@@ -3,6 +3,9 @@ Code analyzer for extracting structural information from Python files.
 """
 
 import ast
+import ast
+from typing import Dict, List, Any, Optional
+
 from pathlib import Path
 from typing import Dict, Any, Optional
 import logging
@@ -24,7 +27,7 @@ class CodeAnalyzer:
         Returns:
             Dictionary containing analysis results
         """
-        analysis = {
+        analysis: Dict[str, Any] = {
             "file_path": str(file_path),
             "module_docstring": None,
             "imports": [],
@@ -98,14 +101,14 @@ class ASTAnalyzer(ast.NodeVisitor):
         self.dependencies = set()
         self._current_class = None
 
-    def visit_Module(self, node):
+    def visit_Module(self, node) -> None:
         """Visit module node to extract module docstring."""
         docstring = ast.get_docstring(node)
         if docstring:
             self.module_docstring = docstring
         self.generic_visit(node)
 
-    def visit_Import(self, node):
+    def visit_Import(self, node) -> None:
         """Visit import statements."""
         for alias in node.names:
             import_info = {
@@ -123,7 +126,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_ImportFrom(self, node):
+    def visit_ImportFrom(self, node) -> None:
         """Visit from-import statements."""
         module = node.module or ""
         for alias in node.names:
@@ -145,7 +148,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_ClassDef(self, node):
+    def visit_ClassDef(self, node) -> None:
         """Visit class definitions."""
         class_info = {
             "name": node.name,
@@ -175,15 +178,15 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.classes.append(class_info)
 
-    def visit_FunctionDef(self, node):
+    def visit_FunctionDef(self, node) -> None:
         """Visit function definitions."""
         self._process_function(node, is_async=False)
 
-    def visit_AsyncFunctionDef(self, node):
+    def visit_AsyncFunctionDef(self, node) -> None:
         """Visit async function definitions."""
         self._process_function(node, is_async=True)
 
-    def _process_function(self, node, is_async=False):
+    def _process_function(self, node, is_async: bool = False) -> None:
         """Process function or async function definition."""
         func_info = {
             "name": node.name,
@@ -214,7 +217,7 @@ class ASTAnalyzer(ast.NodeVisitor):
             func_info["is_method"] = False
             self.functions.append(func_info)
 
-    def visit_If(self, node):
+    def visit_If(self, node) -> None:
         """Visit if statements to check for main guard."""
         # Check for if __name__ == "__main__":
         if self._is_main_guard(node):
@@ -222,7 +225,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_AnnAssign(self, node):
+    def visit_AnnAssign(self, node) -> None:
         """Visit annotated assignments (type hints)."""
         if isinstance(node.target, ast.Name) and self._current_class:
             attr_info = {
@@ -234,7 +237,7 @@ class ASTAnalyzer(ast.NodeVisitor):
             self._current_class["attributes"].append(attr_info)
         self.generic_visit(node)
 
-    def visit_Assign(self, node):
+    def visit_Assign(self, node) -> None:
         """Visit assignments to find constants."""
         # Look for module-level constants (UPPER_CASE names)
         if not self._current_class and node.targets:
@@ -250,7 +253,7 @@ class ASTAnalyzer(ast.NodeVisitor):
                         self.constants.append(const_info)
         self.generic_visit(node)
 
-    def _is_main_guard(self, node) -> bool:
+    def _is_main_guard(self, node: ast.If) -> bool:
         """Check if an if statement is a main guard."""
         if not isinstance(node.test, ast.Compare):
             return False
@@ -273,7 +276,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         return False
 
-    def _get_name(self, node) -> str:
+    def _get_name(self, node: ast.AST) -> str:
         """Get the name from various node types."""
         if isinstance(node, ast.Name):
             return node.id
@@ -294,7 +297,7 @@ class ASTAnalyzer(ast.NodeVisitor):
             # For complex expressions, return a simplified representation
             return f"<{type(node).__name__}>"
 
-    def _get_decorator_name(self, node) -> str:
+    def _get_decorator_name(self, node: ast.AST) -> str:
         """Get decorator name as a string."""
         if isinstance(node, ast.Name):
             return f"@{node.id}"
@@ -306,7 +309,7 @@ class ASTAnalyzer(ast.NodeVisitor):
         else:
             return f"@<{type(node).__name__}>"
 
-    def _extract_arguments(self, args) -> list:
+    def _extract_arguments(self, args: ast.arguments) -> list:
         """Extract function arguments."""
         arg_info = []
 
@@ -339,24 +342,24 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         return arg_info
 
-    def _get_annotation(self, node) -> str:
+    def _get_annotation(self, node: ast.AST) -> str:
         """Get type annotation as a string."""
         return self._get_name(node)
 
-    def _get_return_annotation(self, node) -> Optional[str]:
+    def _get_return_annotation(self, node: ast.FunctionDef) -> Optional[str]:
         """Get return type annotation."""
         if node.returns:
             return self._get_annotation(node.returns)
         return None
 
-    def _is_generator(self, node) -> bool:
+    def _is_generator(self, node: ast.FunctionDef) -> bool:
         """Check if a function is a generator."""
         for child in ast.walk(node):
             if isinstance(child, (ast.Yield, ast.YieldFrom)):
                 return True
         return False
 
-    def _extract_exceptions(self, node) -> list:
+    def _extract_exceptions(self, node: ast.FunctionDef) -> list:
         """Extract exceptions that might be raised."""
         exceptions = []
         for child in ast.walk(node):
@@ -369,7 +372,7 @@ class ASTAnalyzer(ast.NodeVisitor):
                     exceptions.append(child.exc.id)
         return list(set(exceptions))
 
-    def _is_exception_class(self, node) -> bool:
+    def _is_exception_class(self, node: ast.ClassDef) -> bool:
         """Check if a class is an exception class."""
         for base in node.bases:
             base_name = self._get_name(base)
@@ -377,7 +380,7 @@ class ASTAnalyzer(ast.NodeVisitor):
                 return True
         return False
 
-    def _get_metaclass(self, node) -> Optional[str]:
+    def _get_metaclass(self, node: ast.ClassDef) -> Optional[str]:
         """Extract metaclass if specified."""
         for keyword in node.keywords:
             if keyword.arg == 'metaclass':

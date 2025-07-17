@@ -60,6 +60,7 @@ class ChangeTracker:
         # Find modified files
         for file_path in current_files:
             file_str = str(file_path)
+            file_str = str(file_path)
             if file_str in previous_files:
                 # Check multiple indicators of change
                 if self._has_file_changed(file_path, previous_files[file_str]):

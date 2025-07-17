@@ -178,7 +178,7 @@ Format the documentation in clean Markdown with appropriate headers and sections
         return prompt
 
 
-def main():
+def main() -> None:
     """Main entry point for the documentation generator."""
     import argparse
 
