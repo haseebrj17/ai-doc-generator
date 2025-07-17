@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-doc-generator"
+version = "1.0.0"
+description = "AI-powered documentation generator for Python projects using OpenAI"
+readme = "README.md"
+authors = [
+    {name = "Muhammad Haseeb", email = "muhamadhaseeb2001@gmail.com"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Documentation",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["documentation", "ai", "openai", "gpt", "automation", "python"]
+dependencies = [
+    "openai>=1.0.0",
+    "tqdm>=4.65.0",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/haseebrj17/ai-doc-generator"
+Documentation = "https://github.com/haseebrj17/ai-doc-generator/wiki"
+Repository = "https://github.com/haseebrj17/ai-doc-generator"
+Issues = "https://github.com/haseebrj17/ai-doc-generator/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+    "black>=22.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+docs = [
+    "sphinx>=5.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+    "myst-parser>=0.18.0",
+]
+
+[project.scripts]
+ai-doc-gen = "ai_doc_generator.cli:main"
+aidocgen = "ai_doc_generator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ai_doc_generator = ["*.json", "templates/*.md"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --cov=ai_doc_generator"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src/ai_doc_generator"]
+omit = ["*/tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

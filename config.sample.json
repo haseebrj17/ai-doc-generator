@@ -1,0 +1,32 @@
+{
+  "model": "gpt-4-turbo-preview",
+  "project_root": ".",
+  "output_dir": "docs/generated",
+  "state_file": ".doc_state.json",
+  "include_patterns": ["*.py"],
+  "exclude_dirs": [
+    "__pycache__",
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    ".env",
+    "node_modules",
+    ".pytest_cache",
+    ".mypy_cache",
+    "build",
+    "dist",
+    "*.egg-info",
+    ".tox",
+    "htmlcov",
+    ".coverage"
+  ],
+  "exclude_files": [
+    "setup.py",
+    "conftest.py"
+  ],
+  "max_file_size": 100000,
+  "include_tests": false,
+  "include_examples": true,
+  "system_prompt": "You are an expert technical documentation writer specializing in Python projects. Your task is to create clear, comprehensive, and well-structured documentation that helps developers understand and use the code effectively. Focus on: Clear explanations of purpose and functionality, Detailed parameter and return value descriptions, Usage examples where helpful, Important notes about design decisions or limitations, Relationships between components. Format everything in clean, readable Markdown."
+}

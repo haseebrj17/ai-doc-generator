@@ -1,0 +1,32 @@
+# Test requirements for documentation generator
+# Install with: pip install -r tests/documentation/requirements-test.txt
+
+# Testing framework
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+pytest-asyncio>=0.20.0
+
+# Code coverage
+coverage[toml]>=7.0.0
+
+# Mocking
+responses>=0.22.0
+
+# Test utilities
+faker>=15.0.0
+factory-boy>=3.2.0
+
+# Type checking (optional, for development)
+mypy>=1.0.0
+types-requests
+
+# Linting (optional, for development)
+flake8>=6.0.0
+black>=22.0.0
+isort>=5.0.0
+
+# Documentation generator requirements
+openai>=1.0.0
+tqdm>=4.65.0
+pathlib>=1.0.1

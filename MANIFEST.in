@@ -1,0 +1,9 @@
+include README.md
+include LICENSE
+include requirements.txt
+include src/ai_doc_generator/config.sample.json
+recursive-include tests *.py
+recursive-include docs *.md
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
