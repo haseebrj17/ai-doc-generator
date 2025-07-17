@@ -26,6 +26,9 @@ flake8>=6.0.0
 black>=22.0.0
 isort>=5.0.0
 
+# Package management
+setuptools>=80.9.0
+
 # Documentation generator requirements
 openai>=1.0.0
 tqdm>=4.65.0

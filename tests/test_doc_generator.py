@@ -284,7 +284,7 @@ The `App` class is the main entry point for the application.
 
         with pytest.raises(SystemExit):
             # The main() function should exit if no API key
-            from scripts.documentation.doc_generator import main
+            from src.ai_doc_generator.doc_generator import main
             import sys
 
             # Mock command line args
