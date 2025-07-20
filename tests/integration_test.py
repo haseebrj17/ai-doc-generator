@@ -305,7 +305,8 @@ main()  # Prints "Hello, World!"
         assert analysis["classes"][0]["name"] == "User"
         assert len(analysis["classes"][0]["methods"]) == 1
         assert analysis["classes"][0]["methods"][0]["name"] == "is_adult"
-        assert "dataclasses" in analysis["dependencies"]
+        # dataclasses is a stdlib module, so it should not be in dependencies
+        assert "dataclasses" not in analysis["dependencies"]
 
     @pytest.mark.integration
     def test_file_scanner_integration(self, config, temp_project):
