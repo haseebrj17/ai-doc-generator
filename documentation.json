@@ -1,0 +1,2725 @@
+{
+  "src/ai_doc_generator/__init__.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/__init__.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/__init__.py",
+      "module_docstring": "Documentation generator for Python projects using OpenAI.",
+      "imports": [
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 5,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "doc_generator",
+          "name": "DocumentationGenerator",
+          "alias": null,
+          "line": 6,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "file_scanner",
+          "name": "FileScanner",
+          "alias": null,
+          "line": 7,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "code_analyzer",
+          "name": "CodeAnalyzer",
+          "alias": null,
+          "line": 8,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "change_tracker",
+          "name": "ChangeTracker",
+          "alias": null,
+          "line": 9,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "doc_builder",
+          "name": "DocumentationBuilder",
+          "alias": null,
+          "line": 10,
+          "level": 1
+        }
+      ],
+      "classes": [],
+      "functions": [],
+      "constants": [],
+      "loc": 20,
+      "complexity": 0,
+      "has_main": false,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# Documentation for ai_doc_generator\n\nThe `ai_doc_generator` package is designed to automate the creation of documentation for Python projects by leveraging OpenAI's capabilities. This package scans Python files, analyzes the code, tracks changes, and builds comprehensive documentation. The package is structured to be modular, with each component focusing on a specific aspect of the documentation generation process.\n\n## Overview\n\nThe `__init__.py` file serves as the entry point to the `ai_doc_generator` package. It imports and exposes the main components of the package, making them accessible for external use. Additionally, it specifies the package version.\n\n## Key Components\n\n### Config\n\n- **Purpose**: The `Config` class is responsible for managing configuration settings for the documentation generation process. This may include settings such as the directory paths to scan, output formats, and OpenAI API keys.\n- **Key Methods**:\n  - Not detailed in the provided code snippet, but typically includes methods for loading, saving, and accessing various configuration parameters.\n- **Relationships**: Used by other components to access configuration settings.\n\n### DocumentationGenerator\n\n- **Purpose**: This class acts as the orchestrator for the documentation generation process. It coordinates the activities between scanning files, analyzing code, tracking changes, and building the documentation.\n- **Key Methods**:\n  - Again, not specified in the snippet, but likely includes methods for initiating the documentation generation process and possibly for integrating with OpenAI's API.\n- **Relationships**: Interacts with `FileScanner`, `CodeAnalyzer`, `ChangeTracker`, and `DocumentationBuilder` to generate documentation.\n\n### FileScanner\n\n- **Purpose**: Responsible for scanning the specified directories and files that need documentation. It identifies the files to be processed.\n- **Key Methods**:\n  - Methods would include functionality for listing files, filtering based on extensions, and possibly excluding certain directories or files.\n- **Relationships**: Provides a list of files to `CodeAnalyzer` for further analysis.\n\n### CodeAnalyzer\n\n- **Purpose**: Analyzes the Python code to extract documentation-relevant information such as classes, functions, parameters, and docstrings.\n- **Key Methods**:\n  - Likely includes methods for parsing Python files, extracting and analyzing code elements, and possibly leveraging OpenAI for understanding complex code segments.\n- **Relationships**: Feeds analyzed code data to `ChangeTracker` and `DocumentationBuilder`.\n\n### ChangeTracker\n\n- **Purpose**: Monitors changes in the code to determine what parts of the documentation need to be updated. This helps in optimizing the documentation generation process by focusing on modified sections.\n- **Key Methods**:\n  - Would include functionality for comparing current code state with previous states, identifying changes, and possibly versioning documentation.\n- **Relationships**: Works closely with `CodeAnalyzer` and `DocumentationBuilder` to ensure documentation is up-to-date.\n\n### DocumentationBuilder\n\n- **Purpose**: Responsible for compiling the analyzed data into structured documentation. This could involve formatting the documentation into various output formats such as Markdown, HTML, or PDF.\n- **Key Methods**:\n  - Includes methods for organizing documentation structure, applying templates, and generating the final documentation files.\n- **Relationships**: Utilizes information from `CodeAnalyzer` and `ChangeTracker` to build the final documentation.\n\n## Key Dependencies and Imports\n\nThe package imports six internal modules, each representing a core component of the documentation generation process:\n\n- `config`: Manages configuration settings.\n- `doc_generator`: Orchestrates the documentation generation process.\n- `file_scanner`: Scans for files to document.\n- `code_analyzer`: Analyzes Python code for documentation.\n- `change_tracker`: Tracks changes in code for documentation updates.\n- `doc_builder`: Builds the final documentation files.\n\n## Usage Examples\n\nUsage examples are not provided in the code snippet. However, a typical usage scenario might involve initializing a `DocumentationGenerator` instance with appropriate configuration settings and then calling a method to start the documentation generation process.\n\n```python\nfrom ai_doc_generator import Config, DocumentationGenerator\n\n# Initialize configuration\nconfig = Config(...)\n# Create a DocumentationGenerator instance\ndoc_gen = DocumentationGenerator(config)\n# Generate documentation\ndoc_gen.generate()\n```\n\n## Important Notes\n\n- The actual implementation details of the classes and their methods are not provided in the code snippet. Therefore, the descriptions above are based on the typical responsibilities associated with the class names and the general purpose of the package.\n- The package version is specified as \"1.0.0\", indicating the initial release. This should be updated with each significant change to the package.\n- The `__all__` variable explicitly declares the exported symbols from the module, making it clear which components are intended for external use.\n\nThis documentation provides a high-level overview and assumes further details are available in the implementation of each component.",
+    "timestamp": "2025-07-20T16:57:20.629263"
+  },
+  "src/ai_doc_generator/__main__.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/__main__.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/__main__.py",
+      "module_docstring": "Allow package to be run as a module: python -m ai_doc_generator",
+      "imports": [
+        {
+          "type": "from",
+          "module": "cli",
+          "name": "main",
+          "alias": null,
+          "line": 5,
+          "level": 1
+        }
+      ],
+      "classes": [],
+      "functions": [],
+      "constants": [],
+      "loc": 8,
+      "complexity": 0,
+      "has_main": true,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# Documentation for `__main__.py` in ai_doc_generator\n\n## Overview\n\nThe `__main__.py` file in the `ai_doc_generator` package allows the package to be executed as a module directly from the command line. This is particularly useful for creating command-line interfaces (CLI) or scripts that can be run without explicitly calling the Python interpreter with a script path. By including this file with the appropriate code, users can run the package using the command `python -m ai_doc_generator`, making it more accessible and user-friendly.\n\n## Key Dependencies and Imports\n\n### Imports\n\n- `from .cli import main`: This line imports the `main` function from the `cli` module located within the same package. The `main` function is expected to contain the entry point logic for the command-line interface, handling any arguments passed by the user and initiating the appropriate actions.\n\n## Functions\n\nThis file does not define any functions within its scope. However, it makes use of the `main` function imported from the `.cli` module.\n\n### `main` Function (Imported)\n\n#### Purpose\n\nThe `main` function serves as the entry point for the command-line interface of the `ai_doc_generator` package. It is responsible for parsing command-line arguments, executing the required actions based on those arguments, and providing feedback to the user.\n\n#### Parameters\n\nSince the `main` function is defined in another module (`cli`), its parameters are not explicitly listed in this file. Typically, a `main` function for a CLI does not take parameters directly but instead processes arguments passed to the script from the command line.\n\n#### Return Values\n\nThe return value of the `main` function is not explicitly handled in this file. Conventionally, a `main` function may return an exit status code to the operating system, where `0` often indicates success, and any non-zero value indicates an error.\n\n#### Exceptions\n\nAny exceptions raised by the `main` function would depend on its internal implementation and are not documented in this file.\n\n## Usage Example\n\nTo run the `ai_doc_generator` package as a module from the command line, navigate to the parent directory of the package and execute:\n\n```bash\npython -m ai_doc_generator\n```\n\nThis command invokes the `main` function defined in the `cli` module, which then processes any command-line arguments and proceeds with the package's intended functionality.\n\n## Important Notes or Considerations\n\n- The `__main__.py` file is a convention used in Python to indicate that a package can be run as a script. It is crucial for packages intended to provide command-line utilities.\n- The actual functionality and command-line options available through the `ai_doc_generator` package are defined in the `cli` module and the `main` function. To understand the capabilities and options of the CLI, refer to the documentation or source code of the `cli` module.\n- Error handling and logging are not explicitly demonstrated in this file but are critical aspects of developing a robust CLI. These should be implemented within the `main` function or other parts of the package to ensure a smooth user experience.\n\nThis documentation provides a high-level overview of the `__main__.py` file's purpose within the `ai_doc_generator` package, focusing on its role in enabling command-line execution. For detailed information about the CLI's capabilities and options, refer to the documentation or source code of the `cli` module.",
+    "timestamp": "2025-07-20T16:57:37.678853"
+  },
+  "src/ai_doc_generator/change_tracker.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/change_tracker.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/change_tracker.py",
+      "module_docstring": "Change tracker for identifying modified files since last documentation run.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "json",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "type": "import",
+          "module": "subprocess",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "datetime",
+          "name": "datetime",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "cast",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 10
+        },
+        {
+          "type": "import",
+          "module": "hashlib",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 13,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "file_scanner",
+          "name": "FileScanner",
+          "alias": null,
+          "line": 14,
+          "level": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "ChangeTracker",
+          "line": 19,
+          "docstring": "Tracks changes to files between documentation runs.",
+          "bases": [],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "__init__",
+              "line": 22,
+              "docstring": null,
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "config",
+                  "type": "positional",
+                  "annotation": "Config"
+                }
+              ],
+              "returns": null,
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "has_previous_run",
+              "line": 28,
+              "docstring": "Check if there's a previous documentation run.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "get_changed_files",
+              "line": 32,
+              "docstring": "Get list of files that have changed since last run.\n\nReturns:\n    List of Path objects for changed files",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "List[Path]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_has_file_changed",
+              "line": 78,
+              "docstring": "Check if a file has changed since last run.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                },
+                {
+                  "name": "previous_info",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_calculate_file_hash",
+              "line": 105,
+              "docstring": "Calculate SHA256 hash of file content.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_git_changed_files",
+              "line": 113,
+              "docstring": "Get files changed according to git.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "List[Path]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "update_state",
+              "line": 167,
+              "docstring": "Update the state with newly documented files.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "documented_files",
+                  "type": "positional",
+                  "annotation": "List[Path]"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_load_state",
+              "line": 189,
+              "docstring": "Load state from file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "Dict[str, Any]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_save_state",
+              "line": 201,
+              "docstring": "Save state to file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "clear_state",
+              "line": 209,
+              "docstring": "Clear the state (useful for forcing full regeneration).",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "get_documentation_stats",
+              "line": 214,
+              "docstring": "Get statistics about the documentation state.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "Dict",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [],
+      "constants": [],
+      "loc": 230,
+      "complexity": 16,
+      "has_main": false,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# Change Tracker Documentation\n\n## Overview\n\nThe `change_tracker.py` module is designed to track changes in files between documentation runs for a Python project. It identifies new, modified, or deleted files since the last documentation run, leveraging both file system information and git history. This functionality is crucial for optimizing documentation processes, ensuring that only changed files are re-documented, thereby saving time and resources.\n\n## Key Dependencies and Imports\n\n- `json`: For loading and saving state information in JSON format.\n- `subprocess`: For executing git commands and checking for changes in git-tracked files.\n- `pathlib.Path`: For file and directory path manipulations.\n- `datetime`: For handling dates and times, specifically for tracking when the last documentation run occurred.\n- `typing`: Provides type hints for better code clarity and type checking.\n- `logging`: For logging information, warnings, and errors.\n- `hashlib`: For generating SHA256 hashes of file contents to detect changes.\n- `config.Config`: A configuration class from a local module, used for accessing project configuration settings.\n- `file_scanner.FileScanner`: A class from a local module for scanning the project's files.\n\n## Class: ChangeTracker\n\n### Purpose\n\nThe `ChangeTracker` class is responsible for tracking changes to files in a project between documentation runs. It identifies files that have been added, deleted, or modified since the last run, using both filesystem attributes and git history.\n\n### Key Methods\n\n#### `__init__(self, config: Config)`\n\nInitializes a new instance of the `ChangeTracker` class.\n\n- **Parameters**:\n  - `config`: An instance of the `Config` class containing project configuration settings.\n- **Returns**: None.\n\n#### `has_previous_run(self) -> bool`\n\nChecks if there has been a previous documentation run by looking for the existence of a state file and entries within it.\n\n- **Returns**: `True` if a previous run is detected, `False` otherwise.\n\n#### `get_changed_files(self) -> List[Path]`\n\nIdentifies and returns a list of files that have changed since the last documentation run.\n\n- **Returns**: A sorted list of `Path` objects representing files that have changed.\n\n#### `update_state(self, documented_files: List[Path]) -> None`\n\nUpdates the state with information about newly documented files, including their modification time, size, content hash, and the time they were documented.\n\n- **Parameters**:\n  - `documented_files`: A list of `Path` objects representing files that have been documented.\n- **Returns**: None.\n\n#### `clear_state(self) -> None`\n\nClears the current state, effectively forcing a full regeneration of documentation on the next run.\n\n- **Returns**: None.\n\n#### `get_documentation_stats(self) -> Dict`\n\nProvides statistics about the documentation state, including the total number of files, the timestamp of the last run, and the dates of the oldest and newest documentation.\n\n- **Returns**: A dictionary containing documentation statistics.\n\n### Relationships\n\n- Utilizes the `Config` class for configuration settings.\n- Uses the `FileScanner` class to scan the project's files.\n\n### Important Notes\n\n- The class relies on a JSON file (`state_file`) to persist state information between runs.\n- Git commands are used to detect changes for files tracked in a git repository. This requires the project to be a git repository and git to be available in the environment.\n- File changes are detected using modification time, size, and a SHA256 hash of the file's content.\n\n## Usage Example\n\n```python\nfrom config import Config\nfrom change_tracker import ChangeTracker\n\n# Assuming 'config' is an instance of Config with appropriate settings\nchange_tracker = ChangeTracker(config)\n\nif change_tracker.has_previous_run():\n    changed_files = change_tracker.get_changed_files()\n    print(f\"Changed files: {changed_files}\")\nelse:\n    print(\"No previous documentation run detected.\")\n\n# After documentation process\nchange_tracker.update_state(documented_files=changed_files)\n```\n\nThis example demonstrates how to instantiate the `ChangeTracker`, check for a previous run, get a list of changed files, and then update the state after documenting those files. It assumes that a `Config` instance with appropriate settings is already available.",
+    "timestamp": "2025-07-20T16:57:59.772427"
+  },
+  "src/ai_doc_generator/cli.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/cli.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/cli.py",
+      "module_docstring": "Command-line interface for AI Documentation Generator.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "sys",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "type": "import",
+          "module": "argparse",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Optional",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 12,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "doc_generator",
+          "name": "DocumentationGenerator",
+          "alias": null,
+          "line": 13,
+          "level": 1
+        }
+      ],
+      "classes": [],
+      "functions": [
+        {
+          "name": "setup_logging",
+          "line": 16,
+          "docstring": "Configure logging based on verbosity.",
+          "decorators": [],
+          "args": [
+            {
+              "name": "verbose",
+              "type": "positional",
+              "annotation": "bool",
+              "has_default": true
+            }
+          ],
+          "returns": "None",
+          "is_async": false,
+          "is_generator": false,
+          "raises": [],
+          "is_method": false
+        },
+        {
+          "name": "main",
+          "line": 26,
+          "docstring": "Main CLI entry point.",
+          "decorators": [],
+          "args": [],
+          "returns": "None",
+          "is_async": false,
+          "is_generator": false,
+          "raises": [],
+          "is_method": false
+        }
+      ],
+      "constants": [],
+      "loc": 197,
+      "complexity": 4,
+      "has_main": true,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# AI Documentation Generator CLI Documentation\n\n## Overview\n\nThis Python file serves as the command-line interface (CLI) for the AI Documentation Generator, a tool designed to automatically generate documentation for Python projects using AI models. It allows users to configure the documentation generation process through various command-line arguments, such as specifying the project path, output directory, and whether to include test files or not. The CLI also supports dry runs, verbose logging, and custom configurations through JSON files.\n\n## Key Dependencies and Imports\n\n- `sys`: Used for exiting the script with a status code.\n- `argparse`: Facilitates the parsing of command-line arguments.\n- `logging`: Provides logging functionalities.\n- `pathlib.Path`: Used for handling file paths.\n- `typing.Optional`: Annotation for optional typing.\n- `config.Config`: Custom class for handling configuration settings.\n- `doc_generator.DocumentationGenerator`: Core class responsible for generating the documentation.\n\n## Functions\n\n### `setup_logging(verbose: bool = False) -> None`\n\nConfigures the logging level and format based on the verbosity.\n\n**Parameters:**\n\n- `verbose` (`bool`): If `True`, sets the logging level to `DEBUG`. Otherwise, sets it to `INFO`. Defaults to `False`.\n\n**Return Value:** None.\n\n### `main() -> None`\n\nServes as the main entry point for the CLI. It parses command-line arguments, sets up logging, loads configurations, and initiates the documentation generation process.\n\n**Parameters:** None.\n\n**Return Value:** None.\n\n**Exceptions:**\n\n- `KeyboardInterrupt`: Catches and handles user interruption.\n- `Exception`: Catches and logs any unexpected errors during execution.\n\n## Usage Examples\n\n### Generating Documentation for the Current Directory\n\n```bash\nai-doc-gen\n```\n\n### Generating Documentation with a Custom Configuration File\n\n```bash\nai-doc-gen --config my-config.json\n```\n\n### Forcing Full Documentation Regeneration\n\n```bash\nai-doc-gen --full\n```\n\n### Specifying an Output Directory\n\n```bash\nai-doc-gen --output docs/api\n```\n\n### Using a Specific OpenAI Model\n\n```bash\nai-doc-gen --model gpt-4o-mini\n```\n\n## Important Notes and Considerations\n\n- The CLI uses the `argparse` library to parse command-line arguments, providing a flexible interface for users to customize the documentation generation process.\n- Logging configuration is adjustable via the `--verbose` flag, allowing for more detailed output when needed.\n- Configuration settings can be loaded from a JSON file or specified directly through command-line arguments. Command-line arguments override settings in the configuration file.\n- The CLI supports a dry-run mode (`--dry-run`), which outputs the files that would be documented without actually generating any documentation. This is useful for testing configuration settings.\n- The tool is designed to be extensible, with the possibility to specify different OpenAI models for the documentation generation process.\n- Error handling is implemented to ensure a graceful shutdown in case of user interruption or unexpected errors during execution.\n- The `--exclude` option allows users to specify directories to be excluded from the documentation process, adding flexibility to the scope of documentation generation.\n\nThis documentation provides a comprehensive guide to using the AI Documentation Generator CLI, detailing its functionalities, usage, and configuration options.",
+    "timestamp": "2025-07-20T16:58:17.737855"
+  },
+  "src/ai_doc_generator/code_analyzer.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/code_analyzer.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/code_analyzer.py",
+      "module_docstring": "Code analyzer for extracting structural information from Python files.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "ast",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 6,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Optional",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 8
+        }
+      ],
+      "classes": [
+        {
+          "name": "CodeAnalyzer",
+          "line": 13,
+          "docstring": "Analyzes Python code to extract structural information.",
+          "bases": [],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "analyze_file",
+              "line": 16,
+              "docstring": "Analyze a Python file and extract its structure.\n\nArgs:\n    file_path: Path to the file\n    content: File content\n\nReturns:\n    Dictionary containing analysis results",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                },
+                {
+                  "name": "content",
+                  "type": "positional",
+                  "annotation": "str"
+                }
+              ],
+              "returns": "Dict[str, Any]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_calculate_complexity",
+              "line": 69,
+              "docstring": "Calculate a simple complexity score for the file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "analyzer",
+                  "type": "positional",
+                  "annotation": "ASTAnalyzer"
+                }
+              ],
+              "returns": "int",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        },
+        {
+          "name": "ASTAnalyzer",
+          "line": 87,
+          "docstring": "AST visitor for extracting information from Python code.",
+          "bases": [
+            "ast.NodeVisitor"
+          ],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "__init__",
+              "line": 90,
+              "docstring": null,
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_Module",
+              "line": 101,
+              "docstring": "Visit module node to extract module docstring.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.Module"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_Import",
+              "line": 108,
+              "docstring": "Visit import statements.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.Import"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_ImportFrom",
+              "line": 126,
+              "docstring": "Visit from-import statements.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.ImportFrom"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_ClassDef",
+              "line": 148,
+              "docstring": "Visit class definitions.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.ClassDef"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_FunctionDef",
+              "line": 178,
+              "docstring": "Visit function definitions.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.FunctionDef"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_AsyncFunctionDef",
+              "line": 182,
+              "docstring": "Visit async function definitions.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.AsyncFunctionDef"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_process_function",
+              "line": 186,
+              "docstring": "Process function or async function definition.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "Any"
+                },
+                {
+                  "name": "is_async",
+                  "type": "positional",
+                  "annotation": "bool",
+                  "has_default": true
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_If",
+              "line": 217,
+              "docstring": "Visit if statements to check for main guard.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.If"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_AnnAssign",
+              "line": 225,
+              "docstring": "Visit annotated assignments (type hints).",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.AnnAssign"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "visit_Assign",
+              "line": 237,
+              "docstring": "Visit assignments to find constants.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.Assign"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_main_guard",
+              "line": 253,
+              "docstring": "Check if an if statement is a main guard.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.If"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_name",
+              "line": 276,
+              "docstring": "Get the name from various node types.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.AST"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_decorator_name",
+              "line": 297,
+              "docstring": "Get decorator name as a string.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.AST"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_extract_arguments",
+              "line": 309,
+              "docstring": "Extract function arguments.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "args",
+                  "type": "positional",
+                  "annotation": "ast.arguments"
+                }
+              ],
+              "returns": "List[Dict[str, Any]]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_annotation",
+              "line": 342,
+              "docstring": "Get type annotation as a string.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.AST"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_return_annotation",
+              "line": 363,
+              "docstring": "Get return type annotation.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.FunctionDef"
+                }
+              ],
+              "returns": "Optional[str]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_generator",
+              "line": 369,
+              "docstring": "Check if a function is a generator.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.FunctionDef"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_extract_exceptions",
+              "line": 376,
+              "docstring": "Extract exceptions that might be raised.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.FunctionDef"
+                }
+              ],
+              "returns": "list",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_exception_class",
+              "line": 389,
+              "docstring": "Check if a class is an exception class.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.ClassDef"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_get_metaclass",
+              "line": 397,
+              "docstring": "Extract metaclass if specified.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "node",
+                  "type": "positional",
+                  "annotation": "ast.ClassDef"
+                }
+              ],
+              "returns": "Optional[str]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_stdlib_module",
+              "line": 404,
+              "docstring": "Check if a module is part of the standard library.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "module_name",
+                  "type": "positional",
+                  "annotation": "str"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [],
+      "constants": [],
+      "loc": 415,
+      "complexity": 34,
+      "has_main": false,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# Code Analyzer Documentation\n\nThis document provides comprehensive details on the `code_analyzer.py` module, designed for extracting structural information from Python files. The module leverages the Abstract Syntax Tree (AST) to parse Python code, enabling the analysis of its structure, including modules, classes, functions, and more.\n\n## Overview\n\nThe `code_analyzer.py` file is a Python module that analyzes Python code to extract structural information such as documentation strings, imports, classes, functions, constants, and more. It is primarily intended for static analysis of Python code, providing insights into code complexity, dependencies, and the use of decorators among other aspects.\n\n## Dependencies and Imports\n\nThe module relies on the following key imports:\n\n- `ast`: For parsing Python code into its Abstract Syntax Tree.\n- `pathlib.Path`: For handling file paths.\n- `typing`: For type annotations.\n- `logging`: For logging warnings and errors encountered during analysis.\n\n## Classes\n\n### `CodeAnalyzer`\n\n#### Purpose\n\nAnalyzes Python code files to extract structural information, including documentation, imports, classes, functions, constants, and more.\n\n#### Key Methods\n\n- `analyze_file(file_path: Path, content: str) -> Dict[str, Any]`: Analyzes the content of a Python file, returning a dictionary with the analysis results.\n\n- `_calculate_complexity(analyzer: 'ASTAnalyzer') -> int`: Calculates a simple complexity score for the analyzed file based on the number of classes, functions, and decorators used.\n\n#### Relationships\n\n- Utilizes the `ASTAnalyzer` class for traversing the AST of the Python code.\n- Logs warnings and errors using the `logging` module.\n\n### `ASTAnalyzer`\n\n#### Purpose\n\nServes as an AST visitor for extracting detailed information from Python code, including module docstrings, imports, classes, and functions.\n\n#### Key Methods\n\n- `visit_Module(node: ast.Module)`: Extracts the module docstring.\n- `visit_Import(node: ast.Import)`, `visit_ImportFrom(node: ast.ImportFrom)`: Extracts import statements.\n- `visit_ClassDef(node: ast.ClassDef)`: Extracts class definitions, including base classes, methods, and decorators.\n- `visit_FunctionDef(node: ast.FunctionDef)`, `visit_AsyncFunctionDef(node: ast.AsyncFunctionDef)`: Extracts function and async function definitions.\n- `visit_If(node: ast.If)`: Checks for a main guard pattern to determine if the script is executable as a script.\n- `visit_AnnAssign(node: ast.AnnAssign)`, `visit_Assign(node: ast.Assign)`: Extracts annotated assignments and constants.\n\n#### Relationships\n\n- Inherits from `ast.NodeVisitor`, enabling it to traverse the AST.\n- Used by the `CodeAnalyzer` class to perform the detailed analysis of the AST.\n\n## Usage Examples\n\nTo use the `CodeAnalyzer`, you first need to read the content of a Python file and then pass it to the `analyze_file` method along with the file path.\n\n```python\nfrom pathlib import Path\nfrom ai_doc_generator.code_analyzer import CodeAnalyzer\n\nfile_path = Path(\"/path/to/your/python_file.py\")\nwith file_path.open(\"r\") as file:\n    content = file.read()\n\nanalyzer = CodeAnalyzer()\nanalysis_results = analyzer.analyze_file(file_path, content)\nprint(analysis_results)\n```\n\nThis will output a dictionary containing the structural analysis of the Python file, including its complexity, imports, classes, functions, and more.\n\n## Important Notes\n\n- The complexity calculation provided by `_calculate_complexity` is simplistic and intended as a basic measure. For more detailed complexity metrics, consider integrating with tools like Radon.\n- The module does not execute the Python code but analyzes its structure statically. Therefore, dynamic behaviors and runtime state changes are not captured.\n- Syntax errors or other parsing issues in the analyzed file will be logged but may result in incomplete analysis.\n\n## Limitations\n\n- The analysis is limited to the structural aspects that can be extracted from the static AST. Runtime behaviors, such as dynamic imports or metaclass effects, are not analyzed.\n- The module assumes standard Python coding practices and may not accurately analyze code that heavily utilizes metaprogramming or dynamically modifies its structure at runtime.",
+    "timestamp": "2025-07-20T16:58:42.793127"
+  },
+  "src/ai_doc_generator/config.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/config.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/config.py",
+      "module_docstring": "Configuration management for the documentation generator.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "os",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "type": "import",
+          "module": "json",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Optional",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "dataclasses",
+          "name": "dataclass",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "dataclasses",
+          "name": "field",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "dataclasses",
+          "name": "asdict",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        }
+      ],
+      "classes": [
+        {
+          "name": "Config",
+          "line": 13,
+          "docstring": "Configuration settings for the documentation generator.",
+          "bases": [],
+          "decorators": [
+            "@dataclass"
+          ],
+          "methods": [
+            {
+              "name": "from_file",
+              "line": 53,
+              "docstring": "Load configuration from a JSON file.",
+              "decorators": [
+                "@classmethod"
+              ],
+              "args": [
+                {
+                  "name": "cls",
+                  "type": "positional"
+                },
+                {
+                  "name": "config_path",
+                  "type": "positional",
+                  "annotation": "str"
+                }
+              ],
+              "returns": "Config",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": true,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "to_file",
+              "line": 68,
+              "docstring": "Save configuration to a JSON file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "config_path",
+                  "type": "positional",
+                  "annotation": "str"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "validate",
+              "line": 83,
+              "docstring": "Validate the configuration and return any errors.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "List[str]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [
+            {
+              "name": "openai_api_key",
+              "type": "Optional[str]",
+              "line": 17,
+              "has_default": true
+            },
+            {
+              "name": "model",
+              "type": "str",
+              "line": 18,
+              "has_default": true
+            },
+            {
+              "name": "project_root",
+              "type": "Path",
+              "line": 21,
+              "has_default": true
+            },
+            {
+              "name": "output_dir",
+              "type": "Path",
+              "line": 22,
+              "has_default": true
+            },
+            {
+              "name": "state_file",
+              "type": "Path",
+              "line": 23,
+              "has_default": true
+            },
+            {
+              "name": "include_patterns",
+              "type": "List[str]",
+              "line": 26,
+              "has_default": true
+            },
+            {
+              "name": "exclude_dirs",
+              "type": "List[str]",
+              "line": 27,
+              "has_default": true
+            },
+            {
+              "name": "exclude_files",
+              "type": "List[str]",
+              "line": 32,
+              "has_default": true
+            },
+            {
+              "name": "max_file_size",
+              "type": "int",
+              "line": 37,
+              "has_default": true
+            },
+            {
+              "name": "include_tests",
+              "type": "bool",
+              "line": 38,
+              "has_default": true
+            },
+            {
+              "name": "include_examples",
+              "type": "bool",
+              "line": 39,
+              "has_default": true
+            },
+            {
+              "name": "system_prompt",
+              "type": "str",
+              "line": 42,
+              "has_default": true
+            }
+          ],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [],
+      "constants": [],
+      "loc": 93,
+      "complexity": 10,
+      "has_main": false,
+      "decorators_used": [
+        "@dataclass",
+        "@classmethod"
+      ],
+      "dependencies": []
+    },
+    "documentation": "# Documentation for `config.py`\n\n## Overview\n\nThe `config.py` file is responsible for managing the configuration settings for a documentation generator. This generator appears to be designed to work with Python projects, leveraging OpenAI's GPT models (specifically mentioned as \"gpt-4-turbo-preview\") to generate documentation. The configuration settings include OpenAI API credentials, project directories, file patterns for inclusion or exclusion, documentation preferences, and settings for the language model prompts.\n\n## Key Dependencies and Imports\n\n- `os`: Used for fetching environment variables.\n- `json`: Utilized for loading and saving configuration settings from/to a JSON file.\n- `pathlib.Path`: Handles file paths in a platform-independent manner.\n- `typing.List, Optional`: For type annotations, enhancing code readability and maintainability.\n- `dataclasses.dataclass, field, asdict`: Simplifies the creation of data classes and conversion to dictionaries.\n\n## Classes\n\n### `Config`\n\n#### Purpose\n\nThe `Config` class encapsulates all the configuration settings required by the documentation generator. It includes settings for interacting with the OpenAI API, defining the scope of the project files to be documented, and customizing the documentation output.\n\n#### Key Methods\n\n- `__init__`: Automatically generated by the `@dataclass` decorator, initializes the configuration with default values or environment variables.\n- `from_file(config_path: str) -> \"Config\"`: Class method to load configuration settings from a specified JSON file.\n  - **Parameters**:\n    - `config_path`: A string specifying the path to the configuration JSON file.\n  - **Return Value**: An instance of `Config` populated with the settings from the file.\n- `to_file(config_path: str) -> None`: Saves the current configuration settings to a JSON file, excluding sensitive information like the OpenAI API key.\n  - **Parameters**:\n    - `config_path`: A string specifying the path where the configuration should be saved.\n- `validate() -> List[str]`: Validates the current configuration settings and returns a list of error messages, if any.\n  - **Return Value**: A list of strings, each representing an error message related to the configuration validation.\n\n#### Relationships\n\nThe `Config` class is a standalone entity in this file, designed to be instantiated and used by other parts of the documentation generator, particularly for loading, saving, and validating configuration settings.\n\n## Functions\n\nThere are no standalone functions defined outside of the `Config` class in this file.\n\n## Usage Examples\n\n### Loading Configuration from a File\n\n```python\nconfig_path = \"/path/to/config.json\"\nconfig = Config.from_file(config_path)\n```\n\nThis example demonstrates how to load configuration settings from a JSON file into a `Config` object.\n\n### Saving Configuration to a File\n\n```python\nconfig_path = \"/path/to/save/config.json\"\nconfig.to_file(config_path)\n```\n\nThis code snippet shows how to save the current configuration settings to a JSON file, excluding the OpenAI API key for security.\n\n### Validating Configuration\n\n```python\nerrors = config.validate()\nif errors:\n    for error in errors:\n        print(error)\nelse:\n    print(\"Configuration is valid.\")\n```\n\nHere, the `validate` method is used to check the configuration for any issues, printing out any errors found.\n\n## Important Notes and Considerations\n\n- The OpenAI API key is required for the documentation generator to function. It is fetched from the environment variables for security reasons and is not stored in the configuration file.\n- Paths (`project_root`, `output_dir`, `state_file`) are automatically converted to `Path` objects when loaded from a file, ensuring compatibility across different operating systems.\n- The configuration intentionally excludes certain directories and files from documentation generation, such as Python caches, virtual environments, and setup files, which are typically not relevant for API documentation.\n- The `max_file_size` setting is used to limit the size of files processed, which can help in avoiding excessive processing times or memory usage for very large files.\n- The inclusion of tests and examples in the documentation can be toggled via the `include_tests` and `include_examples` settings, allowing for customizable documentation outputs based on the user's preferences.",
+    "timestamp": "2025-07-20T16:59:04.286604"
+  },
+  "src/ai_doc_generator/doc_builder.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/doc_builder.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/doc_builder.py",
+      "module_docstring": "Documentation builder for organizing and formatting the final documentation.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "json",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 6,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 6,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "alias": null,
+          "line": 6,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "datetime",
+          "name": "datetime",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 13,
+          "level": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "DocumentationBuilder",
+          "line": 18,
+          "docstring": "Builds and organizes the final documentation structure.",
+          "bases": [],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "__init__",
+              "line": 21,
+              "docstring": null,
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "config",
+                  "type": "positional",
+                  "annotation": "Config"
+                }
+              ],
+              "returns": null,
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "load_existing_documentation",
+              "line": 26,
+              "docstring": "Load existing documentation for incremental updates.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "add_file_documentation",
+              "line": 38,
+              "docstring": "Add documentation for a single file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                },
+                {
+                  "name": "doc_content",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "build_documentation",
+              "line": 43,
+              "docstring": "Build the final documentation structure.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_save_documentation_json",
+              "line": 62,
+              "docstring": "Save the raw documentation data as JSON.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_build_project_structure",
+              "line": 71,
+              "docstring": "Build a hierarchical project structure from documented files.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_readme",
+              "line": 92,
+              "docstring": "Generate the main README.md file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_module_docs",
+              "line": 126,
+              "docstring": "Generate documentation for each module.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_module_doc",
+              "line": 137,
+              "docstring": "Generate documentation for a single module.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "module_path",
+                  "type": "positional",
+                  "annotation": "str"
+                },
+                {
+                  "name": "files",
+                  "type": "positional",
+                  "annotation": "List[str]"
+                },
+                {
+                  "name": "output_dir",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_api_reference",
+              "line": 181,
+              "docstring": "Generate comprehensive API reference.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_project_overview",
+              "line": 226,
+              "docstring": "Generate project overview documentation.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_tree_view",
+              "line": 257,
+              "docstring": "Generate a tree view of the project structure.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "structure",
+                  "type": "positional",
+                  "annotation": "Dict"
+                },
+                {
+                  "name": "prefix",
+                  "type": "positional",
+                  "annotation": "str",
+                  "has_default": true
+                },
+                {
+                  "name": "is_last",
+                  "type": "positional",
+                  "annotation": "bool",
+                  "has_default": true
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_group_files_by_module",
+              "line": 278,
+              "docstring": "Group files by their module (directory).",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "Dict[str, List[str]]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_generate_module_overview",
+              "line": 293,
+              "docstring": "Generate an overview for a module based on its files.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "module_path",
+                  "type": "positional",
+                  "annotation": "str"
+                },
+                {
+                  "name": "files",
+                  "type": "positional",
+                  "annotation": "List[str]"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_format_analysis",
+              "line": 310,
+              "docstring": "Format code analysis results.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "analysis",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_format_class_reference",
+              "line": 337,
+              "docstring": "Format class information for API reference.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "cls",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "List[str]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_format_function_reference",
+              "line": 369,
+              "docstring": "Format function information for API reference.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "func",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "List[str]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_count_modules",
+              "line": 414,
+              "docstring": "Count the number of modules in the project.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "int",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_count_classes",
+              "line": 422,
+              "docstring": "Count total number of classes.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "int",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_count_functions",
+              "line": 430,
+              "docstring": "Count total number of functions.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "int",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_analyze_architecture",
+              "line": 438,
+              "docstring": "Analyze and describe the project architecture.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_analyze_dependencies",
+              "line": 461,
+              "docstring": "Analyze project dependencies.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_identify_key_components",
+              "line": 473,
+              "docstring": "Identify and describe key components.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_identify_design_patterns",
+              "line": 495,
+              "docstring": "Identify design patterns used in the codebase.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [],
+      "constants": [],
+      "loc": 516,
+      "complexity": 29,
+      "has_main": false,
+      "decorators_used": [],
+      "dependencies": []
+    },
+    "documentation": "# Documentation for `doc_builder.py`\n\n## Overview\n\nThe `doc_builder.py` script is designed to automate the process of building and organizing the final documentation for a Python project. It takes structured data about the codebase, such as documentation and analysis of each file, and compiles it into a comprehensive set of Markdown files. These files include a main README, module-specific documentation, an API reference, and a project overview, providing a detailed and navigable documentation structure for the project.\n\n## Key Dependencies and Imports\n\n- `json`: Used for loading and saving documentation in JSON format.\n- `pathlib.Path`: For handling file and directory paths.\n- `datetime.datetime`: To timestamp the generated documentation.\n- `logging`: For logging information and errors during the documentation process.\n- `typing.Dict, List, Any`: For type annotations, improving code readability and correctness.\n- `.config.Config`: A custom configuration class (presumably from a local module `config.py`) that holds configuration details for the documentation process.\n\n## Classes\n\n### DocumentationBuilder\n\n#### Purpose\n\nThe `DocumentationBuilder` class is responsible for building the entire documentation structure for a Python project. It organizes documentation into a coherent structure, saves it in various formats (JSON, Markdown), and generates several key documentation files, including a README, module documentation, an API reference, and a project overview.\n\n#### Key Methods\n\n- `__init__(self, config: Config)`: Initializes a new instance of the documentation builder with a given configuration.\n- `load_existing_documentation(self) -> None`: Loads existing documentation from a JSON file for incremental updates.\n- `add_file_documentation(self, file_path: Path, doc_content: Dict) -> None`: Adds documentation for a single file.\n- `build_documentation(self) -> None`: Orchestrates the entire process of building the documentation, including saving raw data, generating Markdown files, and organizing the project structure.\n- `_save_documentation_json(self) -> None`: Saves the raw documentation data as a JSON file.\n- `_build_project_structure(self) -> None`: Creates a hierarchical structure of the project based on the documented files.\n- `_generate_readme(self) -> None`: Generates the main README.md file for the project documentation.\n- `_generate_module_docs(self) -> None`: Generates documentation for each module in the project.\n- `_generate_api_reference(self) -> None`: Creates a comprehensive API reference document.\n- `_generate_project_overview(self) -> None`: Produces a project overview document.\n\n#### Relationships\n\n- Uses the `Config` class for configuration settings, such as output directories and project root.\n- Interacts with the filesystem to read from and write to files, utilizing `pathlib.Path`.\n\n## Functions\n\nThis script does not define standalone functions outside of the `DocumentationBuilder` class.\n\n## Usage Examples\n\nTo use the `DocumentationBuilder`, you must first instantiate it with a `Config` object that specifies the necessary configuration for your project. Below is a hypothetical example of how one might use this class:\n\n```python\nfrom config import Config\nfrom doc_builder import DocumentationBuilder\n\n# Assume Config is properly defined elsewhere to specify project settings\nconfig = Config(project_root=\"/path/to/project\", output_dir=\"/path/to/output/documentation\")\n\ndoc_builder = DocumentationBuilder(config)\n\n# Load existing documentation, if any\ndoc_builder.load_existing_documentation()\n\n# Example: Add documentation for a specific file\ndoc_content = {\n    \"summary\": \"This file contains utility functions.\",\n    \"functions\": [\n        {\"name\": \"add\", \"description\": \"Adds two numbers.\"}\n    ]\n}\nfile_path = Path(\"/path/to/project/utils.py\")\ndoc_builder.add_file_documentation(file_path, doc_content)\n\n# Build the entire documentation\ndoc_builder.build_documentation()\n```\n\n## Important Notes and Considerations\n\n- The script assumes a structured format for documentation content, relying on JSON for raw data storage and Markdown for human-readable output.\n- Error handling is primarily done through logging, with exceptions caught and logged rather than raised. This design choice may affect debugging and should be considered when integrating or extending this script.\n- The documentation structure is heavily dependent on the project's file and directory layout, as it generates a tree view and organizes documentation accordingly.\n- Incremental updates are supported by loading existing documentation before adding new or updated files. This feature requires consistent JSON formatting and may be impacted by manual edits to the generated JSON file.\n- The script's functionality is tightly coupled with the `Config` class, which must be defined to match the script's expectations for project root and output directory settings.",
+    "timestamp": "2025-07-20T16:59:30.425217"
+  },
+  "src/ai_doc_generator/doc_generator.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/doc_generator.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/doc_generator.py",
+      "module_docstring": "Main documentation generator for the RainMakerz Document Processing project.\nGenerates comprehensive documentation using OpenAI's API.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "sys",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 9,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Optional",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "datetime",
+          "name": "datetime",
+          "alias": null,
+          "line": 11,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "openai",
+          "name": "OpenAI",
+          "alias": null,
+          "line": 13,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "tqdm",
+          "name": "tqdm",
+          "alias": null,
+          "line": 14,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "file_scanner",
+          "name": "FileScanner",
+          "alias": null,
+          "line": 16,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "code_analyzer",
+          "name": "CodeAnalyzer",
+          "alias": null,
+          "line": 17,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "change_tracker",
+          "name": "ChangeTracker",
+          "alias": null,
+          "line": 18,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "doc_builder",
+          "name": "DocumentationBuilder",
+          "alias": null,
+          "line": 19,
+          "level": 1
+        },
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 20,
+          "level": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "DocumentationGenerator",
+          "line": 30,
+          "docstring": "Main class for generating project documentation using LLM.",
+          "bases": [],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "__init__",
+              "line": 33,
+              "docstring": null,
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "config",
+                  "type": "positional",
+                  "annotation": "Config"
+                }
+              ],
+              "returns": null,
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "generate_documentation",
+              "line": 41,
+              "docstring": "Generate documentation for the project.\n\nArgs:\n    force_full: If True, regenerate all documentation regardless of changes",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "force_full",
+                  "type": "positional",
+                  "annotation": "bool",
+                  "has_default": true
+                }
+              ],
+              "returns": "None",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_document_file",
+              "line": 93,
+              "docstring": "Generate documentation for a single file.\n\nArgs:\n    file_path: Path to the file to document\n\nReturns:\n    Dictionary containing documentation content",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "Optional[Dict]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_create_documentation_prompt",
+              "line": 144,
+              "docstring": "Create a prompt for the LLM to generate documentation.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                },
+                {
+                  "name": "content",
+                  "type": "positional",
+                  "annotation": "str"
+                },
+                {
+                  "name": "analysis",
+                  "type": "positional",
+                  "annotation": "Dict"
+                }
+              ],
+              "returns": "str",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [
+        {
+          "name": "main",
+          "line": 181,
+          "docstring": "Main entry point for the documentation generator.",
+          "decorators": [],
+          "args": [],
+          "returns": "None",
+          "is_async": false,
+          "is_generator": false,
+          "raises": [],
+          "is_method": false
+        }
+      ],
+      "constants": [],
+      "loc": 216,
+      "complexity": 11,
+      "has_main": true,
+      "decorators_used": [],
+      "dependencies": [
+        "openai",
+        "tqdm"
+      ]
+    },
+    "documentation": "# Documentation for `doc_generator.py`\n\n## Overview\n\nThe `doc_generator.py` script is part of the RainMakerz Document Processing project and serves as the main entry point for generating comprehensive documentation for Python projects. It leverages OpenAI's API to analyze source code and produce detailed, Markdown-formatted documentation automatically. This script integrates various components such as file scanning, code analysis, documentation building, and change tracking to efficiently update or generate documentation based on the latest code changes.\n\n## Classes\n\n### DocumentationGenerator\n\n#### Purpose\n\nThe `DocumentationGenerator` class is the core component responsible for orchestrating the documentation generation process. It utilizes several helper classes (`FileScanner`, `CodeAnalyzer`, `ChangeTracker`, `DocumentationBuilder`) to scan for files, analyze code, track changes, and build the final documentation, respectively.\n\n#### Key Methods\n\n- `__init__(self, config: Config)`: Initializes a new instance of the documentation generator with the given configuration.\n  - **Parameters:**\n    - `config`: An instance of `Config` containing configuration settings for the documentation generator.\n- `generate_documentation(self, force_full: bool = False)`: Main method to start the documentation generation process.\n  - **Parameters:**\n    - `force_full`: A boolean flag indicating whether to regenerate all documentation regardless of changes. Defaults to `False`.\n- `_document_file(self, file_path: Path) -> Optional[Dict]`: Generates documentation for a single file.\n  - **Parameters:**\n    - `file_path`: A `Path` object pointing to the file to document.\n  - **Returns:** An optional dictionary containing the documentation content, or `None` if documentation could not be generated.\n- `_create_documentation_prompt(self, file_path: Path, content: str, analysis: Dict) -> str`: Creates a prompt for the LLM based on the file's content and analysis.\n  - **Parameters:**\n    - `file_path`: A `Path` object pointing to the file.\n    - `content`: The content of the file as a string.\n    - `analysis`: A dictionary containing the analysis of the file.\n  - **Returns:** A string containing the prompt for the LLM.\n\n#### Relationships\n\n- Utilizes `Config` for configuration settings.\n- Aggregates `FileScanner`, `CodeAnalyzer`, `ChangeTracker`, and `DocumentationBuilder` to handle specific parts of the documentation generation process.\n\n## Functions\n\n### main()\n\n#### Purpose\n\nServes as the entry point for the documentation generator script. It parses command-line arguments, loads configuration, and initiates the documentation generation process.\n\n#### Parameters\n\n- `--config`: Path to the configuration file.\n- `--full`: Flag to force full documentation regeneration.\n- `--api-key`: OpenAI API key (overrides the configuration file).\n- `--output`: Output directory for the generated documentation.\n\n#### Return Values\n\nNone.\n\n#### Exceptions\n\nExits with an error message if the OpenAI API key is not provided.\n\n## Key Dependencies and Imports\n\n- `sys`: Used for exiting the script with an error code.\n- `logging`: Used for logging messages.\n- `pathlib.Path`: Used for file and directory path manipulations.\n- `typing.Dict`, `typing.Optional`: Used for type hinting.\n- `datetime.datetime`: Used for timestamping documentation.\n- `openai.OpenAI`: Used to interact with OpenAI's API for generating documentation content.\n- `tqdm.tqdm`: Used for displaying progress bars during documentation generation.\n- Local imports (`FileScanner`, `CodeAnalyzer`, `ChangeTracker`, `DocumentationBuilder`, `Config`): Components used in the documentation generation process.\n\n## Usage Examples\n\nTo generate or update documentation for a project:\n\n```bash\npython doc_generator.py --config path/to/config.json --full\n```\n\nTo override the OpenAI API key and specify an output directory:\n\n```bash\npython doc_generator.py --api-key \"your_openai_api_key\" --output path/to/output_directory\n```\n\n## Important Notes or Considerations\n\n- The script requires a valid OpenAI API key to function. This can be provided via a configuration file or directly as a command-line argument.\n- The `--full` flag forces the regeneration of all documentation, which might be necessary after significant changes to the project structure or as a periodic update to ensure documentation accuracy.\n- The script is designed to be extensible, allowing for future enhancements such as support for additional programming languages or integration with other documentation standards.\n- Error handling is implemented to gracefully skip files that cannot be documented due to read errors or issues with the LLM response.",
+    "timestamp": "2025-07-20T16:59:52.478152"
+  },
+  "src/ai_doc_generator/file_scanner.py": {
+    "path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/file_scanner.py",
+    "analysis": {
+      "file_path": "/Users/haseebrajpoot/Downloads/Programming/ai-doc-generator/src/ai_doc_generator/file_scanner.py",
+      "module_docstring": "File scanner for identifying Python files in the project.",
+      "imports": [
+        {
+          "type": "import",
+          "module": "os",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "type": "import",
+          "module": "fnmatch",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "Path",
+          "alias": null,
+          "line": 7,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "List",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Dict",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "cast",
+          "alias": null,
+          "line": 8,
+          "level": 0
+        },
+        {
+          "type": "import",
+          "module": "logging",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "type": "from",
+          "module": "pathlib",
+          "name": "PurePath",
+          "alias": null,
+          "line": 10,
+          "level": 0
+        },
+        {
+          "type": "from",
+          "module": "config",
+          "name": "Config",
+          "alias": null,
+          "line": 12,
+          "level": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "FileScanner",
+          "line": 17,
+          "docstring": "Scans the project directory for files to document.",
+          "bases": [],
+          "decorators": [],
+          "methods": [
+            {
+              "name": "__init__",
+              "line": 20,
+              "docstring": null,
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "config",
+                  "type": "positional",
+                  "annotation": "Config"
+                }
+              ],
+              "returns": null,
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "scan_all_files",
+              "line": 23,
+              "docstring": "Scan the entire project for files matching the include patterns.\n\nReturns:\n    List of Path objects for files to document",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "List[Path]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_find_files",
+              "line": 41,
+              "docstring": "Find all files matching the given pattern.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "pattern",
+                  "type": "positional",
+                  "annotation": "str"
+                }
+              ],
+              "returns": "List[Path]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_should_exclude_dir",
+              "line": 82,
+              "docstring": "Check if a directory should be excluded.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "dir_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_should_include_file",
+              "line": 97,
+              "docstring": "Check if a file should be included in documentation.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_test_directory",
+              "line": 131,
+              "docstring": "Check if a directory is a test directory.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "dir_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "_is_test_file",
+              "line": 136,
+              "docstring": "Check if a file is a test file.",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                },
+                {
+                  "name": "file_path",
+                  "type": "positional",
+                  "annotation": "Path"
+                }
+              ],
+              "returns": "bool",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            },
+            {
+              "name": "get_project_structure",
+              "line": 143,
+              "docstring": "Get the project structure as a nested dictionary.\n\nReturns:\n    Dictionary representing the project structure",
+              "decorators": [],
+              "args": [
+                {
+                  "name": "self",
+                  "type": "positional"
+                }
+              ],
+              "returns": "Dict[str, Any]",
+              "is_async": false,
+              "is_generator": false,
+              "raises": [],
+              "is_method": true,
+              "is_classmethod": false,
+              "is_staticmethod": false,
+              "is_property": false
+            }
+          ],
+          "attributes": [],
+          "is_exception": false,
+          "metaclass": null
+        }
+      ],
+      "functions": [],
+      "constants": [],
+      "loc": 166,
+      "complexity": 13,
+      "has_main": false,
+      "decorators_used": [],
+      "dependencies": [
+        "fnmatch"
+      ]
+    },
+    "documentation": "# Documentation for `file_scanner.py`\n\n## Overview\n\nThe `file_scanner.py` module is designed to identify Python files within a project that are relevant for documentation purposes. It scans the project directory based on specified patterns, excluding certain directories and files as configured. The module supports scanning for files with complex patterns using glob and handling specific cases like excluding large files or test files unless specified otherwise.\n\n## Key Dependencies and Imports\n\n- `os`: Standard library used for interacting with the operating system.\n- `fnmatch`: Module for matching Unix shell-style wildcards.\n- `pathlib.Path`, `pathlib.PurePath`: For filesystem paths with semantics appropriate for different operating systems.\n- `typing.List`, `typing.Dict`, `typing.Any`, `typing.cast`: For type hinting.\n- `logging`: Standard logging module.\n- `config.Config`: Custom configuration class from the project's `config` module, used for accessing project settings.\n\n## Classes\n\n### `FileScanner`\n\n#### Purpose\n\nScans the project directory for Python files that match specified inclusion patterns while respecting exclusion patterns for both files and directories. It aims to identify all relevant files for documentation by filtering out undesired files (e.g., too large, test files, or files in excluded directories).\n\n#### Key Methods\n\n- `__init__(self, config: Config)`: Initializes the `FileScanner` with project configuration.\n- `scan_all_files(self) -> List[Path]`: Scans the entire project directory for files matching the include patterns and returns a list of `Path` objects for the files to document.\n- `_find_files(self, pattern: str) -> List[Path]`: Helper method to find files matching a specific pattern.\n- `_should_exclude_dir(self, dir_path: Path) -> bool`: Determines if a directory should be excluded based on the configuration.\n- `_should_include_file(self, file_path: Path) -> bool`: Checks if a file meets the criteria to be included in the documentation.\n- `_is_test_directory(self, dir_path: Path) -> bool`: Checks if a directory is a test directory.\n- `_is_test_file(self, file_path: Path) -> bool`: Determines if a file is a test file.\n- `get_project_structure(self) -> Dict[str, Any]`: Returns the project structure as a nested dictionary.\n\n#### Relationships\n\nThe `FileScanner` class interacts closely with the `Config` class to access the project's configuration settings, such as include and exclude patterns, maximum file size for inclusion, and the root directory of the project.\n\n## Usage Examples\n\n### Scanning Project Files\n\nTo use `FileScanner` for scanning files in a project, you need to have a `Config` object initialized with your project's configuration. Here's a basic example:\n\n```python\nfrom ai_doc_generator.config import Config\nfrom ai_doc_generator.file_scanner import FileScanner\n\n# Assuming config is already set up with include and exclude patterns\nconfig = Config(project_root=Path(\"/path/to/your/project\"))\n\nfile_scanner = FileScanner(config)\nfiles_to_document = file_scanner.scan_all_files()\n\nprint(f\"Files to document: {files_to_document}\")\n```\n\n### Getting Project Structure\n\nTo get the project structure as a nested dictionary:\n\n```python\nproject_structure = file_scanner.get_project_structure()\nprint(project_structure)\n```\n\n## Important Notes and Considerations\n\n- The scanning process is heavily dependent on the configuration provided, especially the include and exclude patterns. Incorrect patterns can lead to missing files or including undesired files.\n- The method `_find_files` uses different strategies for pattern matching based on the presence of `**` in the pattern. This allows for more flexible file matching but requires understanding of glob patterns.\n- Special handling is implemented for `__init__.py` files to ensure they are included if they contain significant code beyond mere imports or docstrings, even if they match exclude patterns.\n- The module is designed with the assumption that it's part of a larger project with a specific structure, particularly the use of a `Config` object for configuration settings. This may limit its direct applicability in other projects without adaptation.\n- Logging is used to provide debug information, which can be helpful for troubleshooting issues with file scanning and inclusion/exclusion decisions.",
+    "timestamp": "2025-07-20T17:00:15.788319"
+  }
+}
