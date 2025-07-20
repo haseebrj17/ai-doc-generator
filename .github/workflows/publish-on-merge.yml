@@ -30,12 +30,12 @@ jobs:
         
         # Check if this version exists on PyPI
         pip install requests
-        python << EOF
+        python -c "
 import requests
 import sys
 import os
 
-version = "$CURRENT_VERSION"
+version = '$CURRENT_VERSION'
 response = requests.get('https://pypi.org/pypi/ai-doc-generator/json')
 if response.status_code == 200:
     releases = response.json().get('releases', {})
@@ -50,7 +50,7 @@ else:
 print(f'New version {version} detected')
 with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
     f.write('should_publish=true\n')
-EOF
+"
 
   test:
     needs: check-version
