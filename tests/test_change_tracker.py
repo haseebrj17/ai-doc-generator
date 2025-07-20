@@ -101,14 +101,14 @@ class TestChangeTracker:
         tracker.update_state(existing_files)
 
         # Get original state
-        original_state = tracker._state["files"][str(temp_project / "file1.py")]
+        original_state = tracker._state["files"]["file1.py"]
 
         # Modify file to different size but same mtime (edge case)
         file1 = temp_project / "file1.py"
         file1.write_text("# Different size")
 
         # Manually set the mtime back to original to test size detection
-        tracker._state["files"][str(file1)] = {
+        tracker._state["files"]["file1.py"] = {
             **original_state,
             "mtime": time.time() + 100  # Future time to bypass mtime check
         }

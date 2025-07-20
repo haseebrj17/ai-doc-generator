@@ -140,7 +140,7 @@ def test_minor_user():
     @pytest.mark.integration
     def test_full_documentation_generation(self, config, mock_openai_response):
         """Test full documentation generation workflow."""
-        with patch('openai.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             # Setup mock
             mock_client = Mock()
             mock_openai.return_value = mock_client
@@ -193,7 +193,7 @@ main()  # Prints "Hello, World!"
     @pytest.mark.integration
     def test_incremental_documentation_update(self, config, mock_openai_response):
         """Test incremental documentation updates."""
-        with patch('openai.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             # Setup mock
             mock_client = Mock()
             mock_openai.return_value = mock_client
@@ -330,7 +330,7 @@ main()  # Prints "Hello, World!"
     @pytest.mark.integration
     def test_error_handling_workflow(self, config):
         """Test error handling in the workflow."""
-        with patch('openai.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             # Setup mock to raise exception
             mock_client = Mock()
             mock_openai.return_value = mock_client
@@ -417,7 +417,7 @@ def function_{i}_{j}():
     pass
 ''')
 
-        with patch('openai.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             # Setup mock
             mock_client = Mock()
             mock_openai.return_value = mock_client
