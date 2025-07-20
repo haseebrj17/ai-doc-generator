@@ -6,7 +6,7 @@ import json
 import subprocess
 from pathlib import Path
 from datetime import datetime
-from typing import List, Dict
+from typing import List, Dict, Any, cast
 import logging
 import hashlib
 
@@ -48,18 +48,17 @@ class ChangeTracker:
 
         # Find new files
         new_files = current_file_set - previous_file_set
-        for file_path in new_files:
-            changed_files.append(Path(file_path))
-            logger.info(f"New file: {file_path}")
+        for file_path_str in new_files:
+            changed_files.append(Path(file_path_str))
+            logger.info(f"New file: {file_path_str}")
 
         # Find deleted files (we'll handle these in the doc builder)
         deleted_files = previous_file_set - current_file_set
-        for file_path in deleted_files:
-            logger.info(f"Deleted file: {file_path}")
+        for file_path_str in deleted_files:
+            logger.info(f"Deleted file: {file_path_str}")
 
         # Find modified files
         for file_path in current_files:
-            file_str = str(file_path)
             file_str = str(file_path)
             if file_str in previous_files:
                 # Check multiple indicators of change
@@ -185,12 +184,13 @@ class ChangeTracker:
         # Save state
         self._save_state()
 
-    def _load_state(self) -> Dict:
+    def _load_state(self) -> Dict[str, Any]:
         """Load state from file."""
         if self.state_file.exists():
             try:
                 with open(self.state_file, 'r') as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    return cast(Dict[str, Any], data)
             except Exception as e:
                 logger.error(f"Error loading state: {e}")
 

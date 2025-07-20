@@ -3,11 +3,8 @@ Code analyzer for extracting structural information from Python files.
 """
 
 import ast
-import ast
-from typing import Dict, List, Any, Optional
-
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, List, Any, Optional
 import logging
 
 logger = logging.getLogger(__name__)
@@ -90,25 +87,25 @@ class CodeAnalyzer:
 class ASTAnalyzer(ast.NodeVisitor):
     """AST visitor for extracting information from Python code."""
 
-    def __init__(self):
-        self.module_docstring = None
-        self.imports = []
-        self.classes = []
-        self.functions = []
-        self.constants = []
+    def __init__(self) -> None:
+        self.module_docstring: Optional[str] = None
+        self.imports: List[Dict[str, Any]] = []
+        self.classes: List[Dict[str, Any]] = []
+        self.functions: List[Dict[str, Any]] = []
+        self.constants: List[Dict[str, Any]] = []
         self.has_main = False
-        self.decorators_used = set()
-        self.dependencies = set()
-        self._current_class = None
+        self.decorators_used: set[str] = set()
+        self.dependencies: set[str] = set()
+        self._current_class: Optional[Dict[str, Any]] = None
 
-    def visit_Module(self, node) -> None:
+    def visit_Module(self, node: ast.Module) -> None:
         """Visit module node to extract module docstring."""
         docstring = ast.get_docstring(node)
         if docstring:
             self.module_docstring = docstring
         self.generic_visit(node)
 
-    def visit_Import(self, node) -> None:
+    def visit_Import(self, node: ast.Import) -> None:
         """Visit import statements."""
         for alias in node.names:
             import_info = {
@@ -126,7 +123,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_ImportFrom(self, node) -> None:
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
         """Visit from-import statements."""
         module = node.module or ""
         for alias in node.names:
@@ -148,7 +145,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_ClassDef(self, node) -> None:
+    def visit_ClassDef(self, node: ast.ClassDef) -> None:
         """Visit class definitions."""
         class_info = {
             "name": node.name,
@@ -178,15 +175,15 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.classes.append(class_info)
 
-    def visit_FunctionDef(self, node) -> None:
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
         """Visit function definitions."""
         self._process_function(node, is_async=False)
 
-    def visit_AsyncFunctionDef(self, node) -> None:
+    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
         """Visit async function definitions."""
         self._process_function(node, is_async=True)
 
-    def _process_function(self, node, is_async: bool = False) -> None:
+    def _process_function(self, node: Any, is_async: bool = False) -> None:
         """Process function or async function definition."""
         func_info = {
             "name": node.name,
@@ -217,7 +214,7 @@ class ASTAnalyzer(ast.NodeVisitor):
             func_info["is_method"] = False
             self.functions.append(func_info)
 
-    def visit_If(self, node) -> None:
+    def visit_If(self, node: ast.If) -> None:
         """Visit if statements to check for main guard."""
         # Check for if __name__ == "__main__":
         if self._is_main_guard(node):
@@ -225,7 +222,7 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def visit_AnnAssign(self, node) -> None:
+    def visit_AnnAssign(self, node: ast.AnnAssign) -> None:
         """Visit annotated assignments (type hints)."""
         if isinstance(node.target, ast.Name) and self._current_class:
             attr_info = {
@@ -237,7 +234,7 @@ class ASTAnalyzer(ast.NodeVisitor):
             self._current_class["attributes"].append(attr_info)
         self.generic_visit(node)
 
-    def visit_Assign(self, node) -> None:
+    def visit_Assign(self, node: ast.Assign) -> None:
         """Visit assignments to find constants."""
         # Look for module-level constants (UPPER_CASE names)
         if not self._current_class and node.targets:
@@ -309,13 +306,13 @@ class ASTAnalyzer(ast.NodeVisitor):
         else:
             return f"@<{type(node).__name__}>"
 
-    def _extract_arguments(self, args: ast.arguments) -> list:
+    def _extract_arguments(self, args: ast.arguments) -> List[Dict[str, Any]]:
         """Extract function arguments."""
         arg_info = []
 
         # Regular arguments
         for i, arg in enumerate(args.args):
-            info = {"name": arg.arg, "type": "positional"}
+            info: Dict[str, Any] = {"name": arg.arg, "type": "positional"}
             if arg.annotation:
                 info["annotation"] = self._get_annotation(arg.annotation)
 
@@ -328,17 +325,17 @@ class ASTAnalyzer(ast.NodeVisitor):
 
         # *args
         if args.vararg:
-            info = {"name": args.vararg.arg, "type": "vararg"}
+            vararg_info: Dict[str, Any] = {"name": args.vararg.arg, "type": "vararg"}
             if args.vararg.annotation:
-                info["annotation"] = self._get_annotation(args.vararg.annotation)
-            arg_info.append(info)
+                vararg_info["annotation"] = self._get_annotation(args.vararg.annotation)
+            arg_info.append(vararg_info)
 
         # **kwargs
         if args.kwarg:
-            info = {"name": args.kwarg.arg, "type": "kwarg"}
+            kwarg_info: Dict[str, Any] = {"name": args.kwarg.arg, "type": "kwarg"}
             if args.kwarg.annotation:
-                info["annotation"] = self._get_annotation(args.kwarg.annotation)
-            arg_info.append(info)
+                kwarg_info["annotation"] = self._get_annotation(args.kwarg.annotation)
+            arg_info.append(kwarg_info)
 
         return arg_info
 

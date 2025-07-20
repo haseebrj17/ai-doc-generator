@@ -33,7 +33,7 @@ class DocumentationBuilder:
                 logger.info(f"Loaded existing documentation with {len(self.documentation)} files")
             except Exception as e:
                 logger.error(f"Error loading existing documentation: {e}")
-                self.documentation: Dict[str, Any] = {}
+                self.documentation = {}
 
     def add_file_documentation(self, file_path: Path, doc_content: Dict) -> None:
         """Add documentation for a single file."""

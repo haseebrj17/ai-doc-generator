@@ -5,7 +5,7 @@ File scanner for identifying Python files in the project.
 import os
 import fnmatch
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, cast
 import logging
 
 from .config import Config
@@ -129,7 +129,7 @@ class FileScanner:
         Returns:
             Dictionary representing the project structure
         """
-        structure = {"name": self.config.project_root.name, "type": "directory", "children": {}}
+        structure: Dict[str, Any] = {"name": self.config.project_root.name, "type": "directory", "children": {}}
 
         for file_path in self.scan_all_files():
             relative_path = file_path.relative_to(self.config.project_root)
@@ -139,7 +139,7 @@ class FileScanner:
             for i, part in enumerate(parts[:-1]):
                 if part not in current:
                     current[part] = {"name": part, "type": "directory", "children": {}}
-                current = current[part]["children"]
+                current = cast(Dict[str, Any], current[part])["children"]
 
             # Add the file
             file_name = parts[-1]
