@@ -179,6 +179,34 @@ mypy .
 pytest --cov=ai_doc_generator
 ```
 
+## 📚 Documentation
+
+The project documentation is available at: https://haseebrj17.github.io/ai-doc-generator/
+
+### Setting up GitHub Pages
+
+1. Go to Settings → Pages in your GitHub repository
+2. Under "Build and deployment", select "Deploy from a branch"
+3. Choose `gh-pages` branch and `/ (root)` folder
+4. Click Save
+
+## 🚀 Publishing to PyPI
+
+This project has automated publishing workflows:
+
+### Automatic Publishing
+When you push changes to main with an updated version in `pyproject.toml`, the package will automatically be published to PyPI if all tests pass.
+
+### Manual Publishing
+1. Create a new tag: `git tag v1.0.1 && git push origin v1.0.1`
+2. The workflow will automatically publish to PyPI
+
+### Setting up PyPI Tokens
+1. Create an account on [PyPI](https://pypi.org)
+2. Generate an API token from your account settings
+3. Add the token as `PYPI_API_TOKEN` in your repository secrets (Settings → Secrets → Actions)
+4. Optionally, add `TEST_PYPI_API_TOKEN` for test releases
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
