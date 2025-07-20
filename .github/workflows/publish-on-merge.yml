@@ -30,27 +30,32 @@ jobs:
         
         # Check if this version exists on PyPI
         pip install requests
-        python -c "
-import requests
-import sys
-import os
-
-version = '$CURRENT_VERSION'
-response = requests.get('https://pypi.org/pypi/ai-doc-generator/json')
-if response.status_code == 200:
-    releases = response.json().get('releases', {})
-    if version in releases:
-        print(f'Version {version} already exists on PyPI')
+        
+        # Create Python script to check version
+        cat > check_version.py << 'SCRIPT'
+        import requests
+        import sys
+        import os
+        
+        version = os.environ.get('VERSION')
+        response = requests.get('https://pypi.org/pypi/ai-doc-generator/json')
+        if response.status_code == 200:
+            releases = response.json().get('releases', {})
+            if version in releases:
+                print(f'Version {version} already exists on PyPI')
+                with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                    f.write('should_publish=false\n')
+                sys.exit(0)
+        else:
+            print('Package not found on PyPI or error checking')
+        
+        print(f'New version {version} detected')
         with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-            f.write('should_publish=false\n')
-        sys.exit(0)
-else:
-    print('Package not found on PyPI or error checking')
-
-print(f'New version {version} detected')
-with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-    f.write('should_publish=true\n')
-"
+            f.write('should_publish=true\n')
+        SCRIPT
+        
+        # Run the script
+        VERSION=$CURRENT_VERSION python check_version.py
 
   test:
     needs: check-version
