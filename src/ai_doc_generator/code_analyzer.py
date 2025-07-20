@@ -344,12 +344,14 @@ class ASTAnalyzer(ast.NodeVisitor):
         if isinstance(node, ast.Subscript):
             # Handle generic types like List[str], Dict[str, int]
             value = self._get_name(node.value)
-            if isinstance(node.slice, ast.Index):
-                # Python < 3.9
-                slice_value = self._get_annotation(node.slice.value)
+            # Handle both Python < 3.9 and >= 3.9
+            if hasattr(ast, 'Index') and isinstance(node.slice, ast.Index):
+                # Python < 3.9 - ast.Index wraps the actual value
+                slice_node = node.slice.value  # type: ignore
             else:
-                # Python >= 3.9
-                slice_value = self._get_annotation(node.slice)
+                # Python >= 3.9 - slice is the expression directly
+                slice_node = node.slice
+            slice_value = self._get_annotation(slice_node)
             return f"{value}[{slice_value}]"
         elif isinstance(node, ast.Tuple):
             # Handle tuple in generics like Dict[str, int]
