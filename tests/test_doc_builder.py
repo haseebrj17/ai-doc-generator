@@ -9,8 +9,8 @@ from datetime import datetime
 
 import pytest
 
-from src.ai_doc_generator.config import Config
-from src.ai_doc_generator.doc_builder import DocumentationBuilder
+from ai_doc_generator.config import Config
+from ai_doc_generator.doc_builder import DocumentationBuilder
 
 
 class TestDocumentationBuilder:

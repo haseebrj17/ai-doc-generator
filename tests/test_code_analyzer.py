@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from src.ai_doc_generator.code_analyzer import CodeAnalyzer
+from ai_doc_generator.code_analyzer import CodeAnalyzer
 
 
 class TestCodeAnalyzer:

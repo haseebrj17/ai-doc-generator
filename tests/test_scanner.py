@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from src.ai_doc_generator.config import Config
-from src.ai_doc_generator.file_scanner import FileScanner
+from ai_doc_generator.config import Config
+from ai_doc_generator.file_scanner import FileScanner
 
 
 class TestFileScanner:

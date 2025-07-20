@@ -8,8 +8,8 @@ from pathlib import Path
 
 import pytest
 
-from src.ai_doc_generator.config import Config
-from src.ai_doc_generator.change_tracker import ChangeTracker
+from ai_doc_generator.config import Config
+from ai_doc_generator.change_tracker import ChangeTracker
 
 
 class TestChangeTracker:

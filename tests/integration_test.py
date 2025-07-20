@@ -10,12 +10,12 @@ from datetime import datetime
 from unittest.mock import Mock, patch
 import pytest
 
-from src.ai_doc_generator.config import Config
-from src.ai_doc_generator.doc_generator import DocumentationGenerator
-from src.ai_doc_generator.file_scanner import FileScanner
-from src.ai_doc_generator.code_analyzer import CodeAnalyzer
-from src.ai_doc_generator.change_tracker import ChangeTracker
-from src.ai_doc_generator.doc_builder import DocumentationBuilder
+from ai_doc_generator.config import Config
+from ai_doc_generator.doc_generator import DocumentationGenerator
+from ai_doc_generator.file_scanner import FileScanner
+from ai_doc_generator.code_analyzer import CodeAnalyzer
+from ai_doc_generator.change_tracker import ChangeTracker
+from ai_doc_generator.doc_builder import DocumentationBuilder
 
 
 @pytest.mark.integration

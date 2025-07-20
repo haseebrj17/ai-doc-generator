@@ -7,7 +7,7 @@ import json
 import tempfile
 from pathlib import Path
 
-from src.ai_doc_generator.config import Config
+from ai_doc_generator.config import Config
 
 
 class TestConfig:

@@ -8,8 +8,8 @@ from unittest.mock import Mock, patch, MagicMock
 
 import pytest
 
-from src.ai_doc_generator.config import Config
-from src.ai_doc_generator.doc_generator import DocumentationGenerator
+from ai_doc_generator.config import Config
+from ai_doc_generator.doc_generator import DocumentationGenerator
 
 
 class TestDocumentationGenerator:
@@ -284,12 +284,12 @@ The `App` class is the main entry point for the application.
 
         with pytest.raises(SystemExit):
             # The main() function should exit if no API key
-            from src.ai_doc_generator.doc_generator import main
+            from ai_doc_generator.doc_generator import main
             import sys
 
             # Mock command line args
             with patch.object(sys, 'argv', ['doc_generator.py']):
-                with patch('scripts.documentation.doc_generator.Config') as mock_config:
+                with patch('ai_doc_generator.doc_generator.Config') as mock_config:
                     mock_config.return_value = config
                     main()
 
