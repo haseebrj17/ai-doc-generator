@@ -64,7 +64,9 @@ def helper():
         config = Config(
             project_root=temp_project,
             output_dir=temp_project / "docs",
-            openai_api_key="test-key"
+            openai_api_key="test-key",
+            state_file=temp_project / ".doc_state.json",
+            include_patterns=["**/*.py"]
         )
 
         with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
@@ -228,7 +230,9 @@ The `App` class is the main entry point for the application.
         config = Config(
             project_root=temp_project,
             output_dir=temp_project / "docs",
-            openai_api_key="test-key"
+            openai_api_key="test-key",
+            state_file=temp_project / ".doc_state.json",
+            include_patterns=["**/*.py"]
         )
 
         # First generator

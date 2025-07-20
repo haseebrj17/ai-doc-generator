@@ -7,6 +7,7 @@ import fnmatch
 from pathlib import Path
 from typing import List, Dict, Any, cast
 import logging
+from pathlib import PurePath
 
 from .config import Config
 
@@ -41,31 +42,48 @@ class FileScanner:
         """Find all files matching the given pattern."""
         matches = []
 
-        for root, dirs, files in os.walk(self.config.project_root):
-            # Convert to Path for easier handling
-            root_path = Path(root)
-
-            # Skip excluded directories
-            dirs_filtered = [d for d in dirs if not self._should_exclude_dir(root_path / d)]
-            dirs.clear()
-            dirs.extend(dirs_filtered)
-
-            # Skip if we're in a test directory and not including tests
-            if not self.config.include_tests and self._is_test_directory(root_path):
-                continue
-
-            # Check files
-            for filename in files:
-                if fnmatch.fnmatch(filename, pattern):
-                    file_path = root_path / filename
-
-                    if self._should_include_file(file_path):
+        # Use glob for patterns with **
+        if '**' in pattern:
+            for file_path in self.config.project_root.glob(pattern):
+                if file_path.is_file() and self._should_include_file(file_path):
+                    # Check if any parent directory should be excluded
+                    should_exclude = False
+                    for parent in file_path.parents:
+                        if self._should_exclude_dir(parent):
+                            should_exclude = True
+                            break
+                    if not should_exclude:
                         matches.append(file_path)
+        else:
+            # Use walk for simple patterns
+            for root, dirs, files in os.walk(self.config.project_root):
+                # Convert to Path for easier handling
+                root_path = Path(root)
+
+                # Skip excluded directories
+                dirs_filtered = [d for d in dirs if not self._should_exclude_dir(root_path / d)]
+                dirs.clear()
+                dirs.extend(dirs_filtered)
+
+                # Skip if we're in a test directory and not including tests
+                if not self.config.include_tests and self._is_test_directory(root_path):
+                    continue
+
+                # Check files
+                for filename in files:
+                    if fnmatch.fnmatch(filename, pattern):
+                        file_path = root_path / filename
+
+                        if self._should_include_file(file_path):
+                            matches.append(file_path)
 
         return matches
 
     def _should_exclude_dir(self, dir_path: Path) -> bool:
         """Check if a directory should be excluded."""
+        # Skip if directory is the project root itself
+        if dir_path == self.config.project_root:
+            return False
         dir_name = dir_path.name
 
         # Check against exclude patterns

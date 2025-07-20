@@ -261,11 +261,11 @@ class TestDocumentationBuilder:
 
         architecture = builder._analyze_architecture()
 
-        assert "Api Layer: 1 files" in architecture
-        assert "Application Layer: 1 files" in architecture
-        assert "Domain Layer: 1 files" in architecture
-        assert "Infrastructure Layer: 1 files" in architecture
-        assert "Core Layer: 1 files" in architecture
+        assert "**Api Layer:** 1 files" in architecture
+        assert "**Application Layer:** 1 files" in architecture
+        assert "**Domain Layer:** 1 files" in architecture
+        assert "**Infrastructure Layer:** 1 files" in architecture
+        assert "**Core Layer:** 1 files" in architecture
 
     def test_identify_design_patterns(self, builder):
         """Test design pattern identification."""

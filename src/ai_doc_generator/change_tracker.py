@@ -40,7 +40,8 @@ class ChangeTracker:
 
         # Get all current files
         current_files = self.file_scanner.scan_all_files()
-        current_file_set = set(str(f) for f in current_files)
+        # Convert to relative paths for comparison
+        current_file_set = set(str(f.relative_to(self.config.project_root)) for f in current_files)
 
         # Get previous file set
         previous_files = self._state.get("files", {})
@@ -59,10 +60,10 @@ class ChangeTracker:
 
         # Find modified files
         for file_path in current_files:
-            file_str = str(file_path)
-            if file_str in previous_files:
+            relative_str = str(file_path.relative_to(self.config.project_root))
+            if relative_str in previous_files:
                 # Check multiple indicators of change
-                if self._has_file_changed(file_path, previous_files[file_str]):
+                if self._has_file_changed(file_path, previous_files[relative_str]):
                     changed_files.append(file_path)
                     logger.info(f"Modified file: {file_path}")
 
