@@ -123,7 +123,8 @@ def test_minor_user():
             project_root=temp_project,
             output_dir=temp_project / "docs" / "generated",
             state_file=temp_project / ".doc_state.json",
-            include_tests=True
+            include_tests=True,
+            include_patterns=["**/*.py"]  # Match files in subdirectories
         )
 
     @pytest.fixture

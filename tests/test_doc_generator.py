@@ -67,7 +67,7 @@ def helper():
             openai_api_key="test-key"
         )
 
-        with patch('scripts.documentation.doc_generator.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             mock_openai.return_value = mock_openai_client
             generator = DocumentationGenerator(config)
 
@@ -232,7 +232,7 @@ The `App` class is the main entry point for the application.
         )
 
         # First generator
-        with patch('scripts.documentation.doc_generator.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             mock_client = Mock()
             mock_response = Mock()
             mock_response.choices = [
@@ -245,13 +245,13 @@ The `App` class is the main entry point for the application.
             gen1.generate_documentation()
 
         # Second generator should recognize previous run
-        with patch('scripts.documentation.doc_generator.OpenAI') as mock_openai:
+        with patch('ai_doc_generator.doc_generator.OpenAI') as mock_openai:
             mock_openai.return_value = Mock()
             gen2 = DocumentationGenerator(config)
 
             assert gen2.change_tracker.has_previous_run()
 
-    @patch('scripts.documentation.doc_generator.logger')
+    @patch('ai_doc_generator.doc_generator.logger')
     def test_error_handling_during_generation(self, mock_logger, generator, temp_project):
         """Test error handling during documentation generation."""
         # Create a file that will cause an error
@@ -295,7 +295,7 @@ The `App` class is the main entry point for the application.
 
     def test_progress_bar_integration(self, generator, temp_project):
         """Test that progress bar is used during generation."""
-        with patch('scripts.documentation.doc_generator.tqdm') as mock_tqdm:
+        with patch('ai_doc_generator.doc_generator.tqdm') as mock_tqdm:
             # Create a mock progress bar
             mock_pbar = MagicMock()
             mock_tqdm.return_value.__enter__.return_value = mock_pbar

@@ -341,7 +341,22 @@ class ASTAnalyzer(ast.NodeVisitor):
 
     def _get_annotation(self, node: ast.AST) -> str:
         """Get type annotation as a string."""
-        return self._get_name(node)
+        if isinstance(node, ast.Subscript):
+            # Handle generic types like List[str], Dict[str, int]
+            value = self._get_name(node.value)
+            if isinstance(node.slice, ast.Index):
+                # Python < 3.9
+                slice_value = self._get_annotation(node.slice.value)
+            else:
+                # Python >= 3.9
+                slice_value = self._get_annotation(node.slice)
+            return f"{value}[{slice_value}]"
+        elif isinstance(node, ast.Tuple):
+            # Handle tuple in generics like Dict[str, int]
+            elements = [self._get_annotation(el) for el in node.elts]
+            return ", ".join(elements)
+        else:
+            return self._get_name(node)
 
     def _get_return_annotation(self, node: ast.FunctionDef) -> Optional[str]:
         """Get return type annotation."""

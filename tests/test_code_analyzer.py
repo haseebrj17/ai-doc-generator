@@ -125,7 +125,7 @@ import external_package
         result = analyzer.analyze_file(Path("test.py"), code)
 
         imports = result["imports"]
-        assert len(imports) == 6
+        assert len(imports) == 7  # os, sys, Path, List, Dict, helper, external_package
 
         # Check import types
         import_map = {imp["module"]: imp for imp in imports if imp["type"] == "import"}

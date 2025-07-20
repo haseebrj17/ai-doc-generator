@@ -169,7 +169,8 @@ class ChangeTracker:
         for file_path in documented_files:
             try:
                 stat = file_path.stat()
-                self._state["files"][str(file_path)] = {
+                relative_path = file_path.relative_to(self.config.project_root)
+                self._state["files"][str(relative_path)] = {
                     "mtime": stat.st_mtime,
                     "size": stat.st_size,
                     "hash": self._calculate_file_hash(file_path),

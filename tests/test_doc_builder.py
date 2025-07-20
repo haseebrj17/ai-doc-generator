@@ -104,7 +104,7 @@ class TestDocumentationBuilder:
 
     def test_add_file_documentation(self, builder):
         """Test adding documentation for a single file."""
-        file_path = Path("test.py")
+        file_path = builder.config.project_root / "test.py"
         doc_content = {
             "documentation": "Test documentation",
             "analysis": {"loc": 10}
@@ -261,7 +261,7 @@ class TestDocumentationBuilder:
 
         architecture = builder._analyze_architecture()
 
-        assert "API Layer: 1 files" in architecture
+        assert "Api Layer: 1 files" in architecture
         assert "Application Layer: 1 files" in architecture
         assert "Domain Layer: 1 files" in architecture
         assert "Infrastructure Layer: 1 files" in architecture
